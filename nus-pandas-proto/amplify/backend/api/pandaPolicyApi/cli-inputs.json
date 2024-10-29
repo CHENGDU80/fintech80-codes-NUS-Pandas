@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "paths": {
+    "/policy": {
+      "name": "/policy",
+      "lambdaFunction": "pandaPolicyLambda",
+      "permissions": {
+        "setting": "protected",
+        "auth": [
+          "create",
+          "read"
+        ],
+        "guest": [
+          "read"
+        ]
+      }
+    }
+  }
+}

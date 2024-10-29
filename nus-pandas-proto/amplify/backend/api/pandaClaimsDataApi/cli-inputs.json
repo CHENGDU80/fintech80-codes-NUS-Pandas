@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "paths": {
+    "/claims": {
+      "name": "/claims",
+      "lambdaFunction": "pandaClaimsDataLambda",
+      "permissions": {
+        "setting": "protected",
+        "auth": [
+          "create",
+          "read",
+          "update"
+        ],
+        "guest": [
+          "read"
+        ]
+      }
+    }
+  }
+}

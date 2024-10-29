@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "paths": {
+    "/accidents": {
+      "name": "/accidents",
+      "lambdaFunction": "pandaAccidentRecordsLambda",
+      "permissions": {
+        "setting": "protected",
+        "auth": [
+          "create",
+          "read"
+        ],
+        "guest": [
+          "create",
+          "read"
+        ]
+      }
+    }
+  }
+}

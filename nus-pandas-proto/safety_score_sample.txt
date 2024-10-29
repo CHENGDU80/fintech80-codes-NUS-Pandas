@@ -1,0 +1,60 @@
+import pandas as pd
+import numpy as np
+
+# Sample IoT data
+data = {
+    'Timestamp': pd.date_range(start='2024-10-01', periods=100, freq='T'),  # Sample 100 timestamps
+    'Steering_Angle': np.random.randint(-30, 30, 100),  # Simulated steering angles
+    'Acceleration': np.random.uniform(-2, 2, 100),  # Acceleration/deceleration (g)
+    'Speed': np.random.randint(20, 120, 100),  # Speed in km/h
+    'Lane_Drift': np.random.choice([0, 1], 100),  # 1 for lane drift, 0 for no drift
+    'Phone_Use': np.random.choice([0, 1], 100)  # 1 for phone use while driving, 0 for no use
+}
+
+# Create a DataFrame
+df_iot = pd.DataFrame(data)
+
+# Define safety score thresholds based on industry criteria
+def calculate_safety_score(row):
+    safety_score = 100  # Start with a perfect score
+
+    # 1. Steering Angle: Deduct points for sharp steering changes
+    if abs(row['Steering_Angle']) > 15:
+        safety_score -= 5  # Deduct 5 points for sharp changes
+
+    # 2. Acceleration: Deduct points for hard acceleration or deceleration
+    if row['Acceleration'] > 1.5 or row['Acceleration'] < -1.5:
+        safety_score -= 10  # Deduct 10 points for acceleration > 1.5g or deceleration < -1.5g
+
+    # 3. Speed: Deduct points for speeding beyond 20% over the limit
+    speed_limit = 80  # Assume 80 km/h as the default speed limit
+    if row['Speed'] > 1.2 * speed_limit:
+        safety_score -= 15  # Deduct 15 points for exceeding speed limit by 20%
+
+    # 4. Lane Drift: Deduct points for frequent lane drifts
+    if row['Lane_Drift'] == 1:
+        safety_score -= 5  # Deduct 5 points for lane drift
+
+    # 5. Phone Use: Deduct points for phone use while driving
+    if row['Phone_Use'] == 1:
+        safety_score -= 20  # Deduct 20 points for using phone while driving
+
+    # Ensure score is not below 0
+    safety_score = max(safety_score, 0)
+    
+    return safety_score
+
+# Apply the safety score calculation to each row
+df_iot['Safety_Score'] = df_iot.apply(calculate_safety_score, axis=1)
+
+# Display the DataFrame with Safety Scores
+print(df_iot[['Timestamp', 'Steering_Angle', 'Acceleration', 'Speed', 'Lane_Drift', 'Phone_Use', 'Safety_Score']].head())
+
+# Further analyze safety score distribution
+print("\nSafety Score Distribution:")
+print(df_iot['Safety_Score'].value_counts(bins=5, sort=False))
+
+# Example analysis to identify risky behaviors
+risky_behavior = df_iot[df_iot['Safety_Score'] < 50]
+print("\nRecords with Safety Score < 50 (High Risk):")
+print(risky_behavior.head())

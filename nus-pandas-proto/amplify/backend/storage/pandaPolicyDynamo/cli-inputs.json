@@ -1,0 +1,10 @@
+{
+  "resourceName": "pandaPolicyDynamo",
+  "tableName": "pandaPolicyDynamo",
+  "partitionKey": {
+    "fieldName": "VIN",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": []
+}
