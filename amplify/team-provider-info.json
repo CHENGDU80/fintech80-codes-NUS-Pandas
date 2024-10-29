@@ -1,0 +1,40 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-nuspandasproto-dev-1b896-authRole",
+      "UnauthRoleArn": "arn:aws:iam::105396637631:role/amplify-nuspandasproto-dev-1b896-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::105396637631:role/amplify-nuspandasproto-dev-1b896-authRole",
+      "Region": "ap-southeast-1",
+      "DeploymentBucketName": "amplify-nuspandasproto-dev-1b896-deployment",
+      "UnauthRoleName": "amplify-nuspandasproto-dev-1b896-unauthRole",
+      "StackName": "amplify-nuspandasproto-dev-1b896",
+      "StackId": "arn:aws:cloudformation:ap-southeast-1:105396637631:stack/amplify-nuspandasproto-dev-1b896/7be2b3f0-9503-11ef-9f6a-0696be146d89",
+      "AmplifyAppId": "d2coyphl27vlud",
+      "APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-nuspandasproto-dev-1b896-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json"
+    },
+    "categories": {
+      "auth": {
+        "nuspandasproto": {}
+      },
+      "storage": {
+        "pandaAccidentRecordsDynamo": {},
+        "pandaS3": {},
+        "pandaClaimsDataDynamo": {}
+      },
+      "function": {
+        "pandaAccidentRecordsLambda": {
+          "deploymentBucketName": "amplify-nuspandasproto-dev-1b896-deployment",
+          "s3Key": "amplify-builds/pandaAccidentRecordsLambda-6a326263674e635a4550-build.zip"
+        },
+        "pandaClaimsDataLambda": {
+          "deploymentBucketName": "amplify-nuspandasproto-dev-1b896-deployment",
+          "s3Key": "amplify-builds/pandaClaimsDataLambda-51336a794a547135772f-build.zip"
+        }
+      },
+      "api": {
+        "pandaAccidentRecordsApi": {},
+        "pandaClaimsDataApi": {}
+      }
+    }
+  }
+}

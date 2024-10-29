@@ -1,0 +1,14 @@
+{
+  "resourceName": "pandaAccidentRecordsDynamo",
+  "tableName": "pandaAccidentRecordsDynamo",
+  "partitionKey": {
+    "fieldName": "VIN",
+    "fieldType": "string"
+  },
+  "sortKey": {
+    "fieldName": "timeStamp",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": []
+}
